@@ -3,40 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eHospital Dashboard - State Wise</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>eHospital</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: hwb(211 0% 0%);
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <img src="Images/image1.jpg" alt="NIC eHospital Logo">
-                <h1>eHospital - Simplifying Healthcare Service Delivery</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="statewise.html">State wise Dashboard</a></li>
-                    <li><a href="create-health-id.html">Create Health ID</a></li>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="live-status.html">Live Status</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <a href="create-health-id.html">Create Health ID</a>
+            <a href="index.html">Home</a>
+            <a href="live-status.html">Live Status</a>
+            <a href="about-us.html">About Us</a>
+            <a href="login.html">Login</a>
+        </nav>
     </header>
 
-    <main>
-        <div class="container">
-            <h2>State Wise Dashboard</h2>
-            <!-- Add content for State Wise Dashboard here -->
-        </div>
-    </main>
+    <div class="container">
+        <h1>eHospital Dashboard</h1>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 FusionX. All Rights Reserved.</p>
+        <div class="section">
+            <div class="section-title">District Wise Display</div>
+            <select>
+                <option value="All">All States</option>
+                <option value="Central Delhi">Central Delhi</option>
+                <option value="East Delhi">East Delhi</option>
+                <option value="New Delhi">New Delhi</option>
+                <option value="North Delhi">North Delhi</option>
+                <option value="North East Delhi">North East Delhi</option>
+                <option value="North West Delhi">North West Delhi</option>
+                <option value="Shahdara">Shahdara</option>
+                <option value="South Delhi">South Delhi</option>
+                <option value="South East Delhi">South East Delhi</option>
+                <option value="South West Delhi">South West Delhi</option>
+                <option value="West Delhi">West Delhi</option>
+            </select>
         </div>
-    </footer>
+
+        <div class="section">
+            <div class="section-title">Patient Registration</div>
+            <div class="form-group">
+                <label for="new-opd">New OPD</label>
+                <input type="number" id="new-opd" value="285783983" readonly>
+            </div>
+            <div class="form-group">
+                <label for="opd-follow-up">OPD Follow Up</label>
+                <input type="number" id="opd-follow-up" value="101955389" readonly>
+            </div>
+            <div class="form-group">
+                <label for="casualty-new">Casualty New</label>
+                <input type="number" id="casualty-new" value="50865245" readonly>
+            </div>
+            <div class="form-group">
+                <label for="casualty-followup">Casualty Follow Up</label>
+                <input type="number" id="casualty-followup" value="2032865" readonly>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">In Patient</div>
+            <div class="form-group">
+                <label for="admission">Admission</label>
+                <input type="number" id="admission" value="34719449" readonly>
+            </div>
+            <div class="form-group">
+                <label for="discharge">Discharge</label>
+                <input type="number" id="discharge" value="14317359" readonly>
+            </div>
+            <div class="form-group">
+                <label for="transfer">Transfer</label>
+                <input type="number" id="transfer" value="1500618" readonly>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Electronic Health Records</div>
+            <div class="form-group">
+                <label for="prescription">Prescription</label>
+                <input type="number" id="prescription" value="5382331" readonly>
+            </div>
+            <div class="form-group">
+                <label for="laboratory-report">Laboratory Report</label>
+                <input type="number" id="laboratory-report" value="15043426" readonly>
+            </div>
+            <div class="form-group">
+                <label for="radiology-report">Radiology Report</label>
+                <input type="number" id="radiology-report" value="424941" readonly>
+            </div>
+            <div class="form-group">
+                <label for="discharge-summary">Discharge Summary</label>
+                <input type="number" id="discharge-summary" value="14317359" readonly>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Billing & Inventory</div>
+            <div class="form-group">
+                <label for="bill">Bill</label>
+                <input type="number" id="bill" value="88874380" readonly>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">ABHA</div>
+            <div class="form-group">
+                <label for="abha-created">ABHA Created</label>
+                <input type="number" id="abha-created" value="1722902" readonly>
+            </div>
+            <div class="form-group">
+                <label for="health-record-link-request">Health Record Link Request</label>
+                <input type="number" id="health-record-link-request" value="20350350" readonly>
+            </div>
+            <div class="form-group">
+                <label for="scan-and-share">Scan and Share</label>
+                <input type="number" id="scan-and-share" value="9577166" readonly>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script>
+        // JavaScript for dynamically updating data (example)
+        const newOpdInput = document.getElementById('new-opd');
+        const opdFollowUpInput = document.getElementById('opd-follow-up');
+
+        // Simulate real-time data updates
+        setInterval(() => {
+            // Update data randomly (replace with actual data fetching logic)
+            const newOpdValue = Math.floor(Math.random() * 100000000) + 100000000;
+            const opdFollowUpValue = Math.floor(Math.random() * 100000000) + 100000000;
+
+            // Update input values
+            newOpdInput.value = newOpdValue;
+            opdFollowUpInput.value = opdFollowUpValue;
+        }, 5000); // Update every 5 seconds
+    </script>
 </body>
 </html>
