@@ -1,41 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eHospital Dashboard - Create Health ID</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <div class="logo">
-                <img src="img3.png" alt="NIC eHospital Logo">
-                <h1>eHospital - Simplifying Healthcare Service Delivery</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="statewise.html">State wise Dashboard</a></li>
-                    <li><a href="create-health-id.html">Create Health ID</a></li>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="login.html">Login</a></li>
-                </ul>
-            </nav>
+      <div class="container">
+        <div class="logo">
+          <img src="img3.png" alt="NIC eHospital Logo" />
+          <h1>eHospital - Simplifying Healthcare Service Delivery</h1>
         </div>
+        <nav>
+          <ul>
+            <li><a href="statewise.html">State wise Dashboard</a></li>
+            <li><a href="create-health-id.html">Create Health ID</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
-        <div class="container">
-            <h2>Create Health ID</h2>
-            <!-- Add content for Create Health ID here -->
-        </div>
+      <div class="container">
+        <form id="healthIdForm" >
+          <div class="healthId">
+            <h3>Health ID</h3>
+            <h2>Create your health ID using Aadhar number</h2>
+
+            <div class="inp2">
+              <p>Name <span style="color: red">*</span></p>
+              <input type="text" placeholder="Your name" id="username" required />
+              <p>Email <span style="color: red">*</span></p>
+              <input type="email" id="email" placeholder="xyz@gmail.com" required />
+              <p>Contact Number <span style="color: red">*</span></p>
+              <input type="tel" id="phn" placeholder="10-digit mobile number" maxlength="10" required />
+            </div>
+            <div class="inp">
+              <p>Aadhar number <span style="color: red">*</span></p>
+              <input type="text" id="adhar1" class="adhar" placeholder="XXXX" maxlength="4" required />
+              <input type="text" id="adhar2" class="adhar" placeholder="XXXX" maxlength="4" required />
+              <input type="text" id="adhar3" class="adhar" placeholder="XXXX" maxlength="4" required />
+            </div>
+            <div class="inp2">
+              <p>Password <span style="color: red">*</span></p>
+              <input type="password" id="pass" placeholder="Your Password" required />
+            </div>
+            <input type="radio" id="verify" value="Verify" />
+            <label for="verify">Verify Me</label> <br />
+            <button type="submit" id="createButton">Create ID</button>
+          </div>
+        </form>
+      </div>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 FusionX. All Rights Reserved.</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2024 FusionX. All Rights Reserved.</p>
+      </div>
     </footer>
-</body>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  </body>
 </html>
