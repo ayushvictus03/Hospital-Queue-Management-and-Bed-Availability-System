@@ -1,0 +1,140 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  header {
+    background-color: #0044cc;
+    color: #fff;
+    padding: 15px 0;
+  }
+  
+  header .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  header .logo img {
+    width: 100px;
+    margin-right: 15px;
+  }
+  
+  header nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  header nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  header nav ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Form Styles */
+  .main {
+    padding: 30px 0;
+  }
+  
+  .healthId {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .healthId h3 {
+    color: #0044cc;
+    margin-bottom: 10px;
+  }
+  
+  .healthId h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .inp2 p, .inp p {
+    margin: 0 0 10px;
+  }
+  
+  .inp2 input, .inp input {
+    width: calc(100% - 10px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .inp input.adhar {
+    width: calc(30% - 10px);
+    margin-right: 10px;
+  }
+  
+  .inp input.adhar:last-child {
+    margin-right: 0;
+  }
+  
+  button {
+    background-color: #0044cc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #003399;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
+  footer {
+    background-color: #0044cc;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 20px;
+  }
+  
+  /* Success Message Styles */
+  .success-message {
+    background-color: #e0f7fa;
+    border: 2px solid #0044cc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .success-message h2 {
+    color: #0044cc;
+    margin-bottom: 15px;
+  }
+  
+  .success-message p {
+    color: #333;
+    font-size: 18px;
+  }
+  

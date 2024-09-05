@@ -10,7 +10,7 @@
     <header>
       <div class="container">
         <div class="logo">
-          <img src="img3.png" alt="NIC eHospital Logo" />
+          <img src="Images/img3.png" alt="NIC eHospital Logo" />
           <h1>eHospital - Simplifying Healthcare Service Delivery</h1>
         </div>
         <nav>
@@ -24,14 +24,14 @@
         </nav>
       </div>
     </header>
-
+  
     <main>
       <div class="container">
-        <form id="healthIdForm" >
+        <form id="healthIdForm">
           <div class="healthId">
             <h3>Health ID</h3>
             <h2>Create your health ID using Aadhar number</h2>
-
+  
             <div class="inp2">
               <p>Name <span style="color: red">*</span></p>
               <input type="text" placeholder="Your name" id="username" required />
@@ -57,16 +57,23 @@
         </form>
       </div>
     </main>
-
+  
     <footer>
       <div class="container">
         <p>&copy; 2024 FusionX. All Rights Reserved.</p>
       </div>
     </footer>
-
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+  
+    <script>
+      document.getElementById("healthIdForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission
+  
+        // Log to console for debugging
+        console.log("Form submitted");
+  
+        // Redirect to success page
+        window.location.href = "sucesspage.html";
+      });
+    </script>
   </body>
-</html>
+  </html>
