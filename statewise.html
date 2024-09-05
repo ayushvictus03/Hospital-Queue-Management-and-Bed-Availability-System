@@ -103,6 +103,20 @@
         th {
             background-color: #f0f0f0;
         }
+        footer {
+        background-color: #333; 
+        padding: 1rem 0; 
+        color: white; 
+        text-align: center; 
+        
+        }
+
+        footer .container {
+        max-width: 1200px; 
+        margin: 0 auto;
+        padding: 0 1rem; 
+        background-color: transparent; 
+        }
     </style>
 </head>
 <body>
@@ -121,7 +135,7 @@
 
         <div class="section">
             <div class="section-title">District Wise Display</div>
-            <select>
+            <select id="district-dropdown">
                 <option value="All">All States</option>
                 <option value="Central Delhi">Central Delhi</option>
                 <option value="East Delhi">East Delhi</option>
@@ -138,103 +152,1522 @@
         </div>
 
         <div class="section">
+            <div class="section-title">Hospitals</div>
+            <select id="hospital-dropdown">
+                <option value="All">All Hospitals</option>
+            </select>
+        </div>
+
+        <div class="section">
             <div class="section-title">Patient Registration</div>
             <div class="form-group">
                 <label for="new-opd">New OPD</label>
-                <input type="number" id="new-opd" value="285783983" readonly>
+                <input type="number" id="new-opd" readonly>
             </div>
             <div class="form-group">
                 <label for="opd-follow-up">OPD Follow Up</label>
-                <input type="number" id="opd-follow-up" value="101955389" readonly>
+                <input type="number" id="opd-follow-up" readonly>
             </div>
             <div class="form-group">
                 <label for="casualty-new">Casualty New</label>
-                <input type="number" id="casualty-new" value="50865245" readonly>
+                <input type="number" id="casualty-new" readonly>
             </div>
             <div class="form-group">
                 <label for="casualty-followup">Casualty Follow Up</label>
-                <input type="number" id="casualty-followup" value="2032865" readonly>
+                <input type="number" id="casualty-followup" readonly>
             </div>
         </div>
-
+        
         <div class="section">
             <div class="section-title">In Patient</div>
             <div class="form-group">
                 <label for="admission">Admission</label>
-                <input type="number" id="admission" value="34719449" readonly>
+                <input type="number" id="admission" readonly>
             </div>
             <div class="form-group">
                 <label for="discharge">Discharge</label>
-                <input type="number" id="discharge" value="14317359" readonly>
+                <input type="number" id="discharge" readonly>
             </div>
             <div class="form-group">
                 <label for="transfer">Transfer</label>
-                <input type="number" id="transfer" value="1500618" readonly>
+                <input type="number" id="transfer" readonly>
             </div>
         </div>
-
+        
         <div class="section">
-            <div class="section-title">Electronic Health Records</div>
+            <div class="section-title">Beds Details</div>
             <div class="form-group">
-                <label for="prescription">Prescription</label>
-                <input type="number" id="prescription" value="5382331" readonly>
+                <label for="total-beds">Total no. of beds</label>
+                <input type="number" id="total-beds" readonly>
             </div>
             <div class="form-group">
-                <label for="laboratory-report">Laboratory Report</label>
-                <input type="number" id="laboratory-report" value="15043426" readonly>
+                <label for="occupied-beds">Occupied beds</label>
+                <input type="number" id="occupied-beds" readonly>
             </div>
             <div class="form-group">
-                <label for="radiology-report">Radiology Report</label>
-                <input type="number" id="radiology-report" value="424941" readonly>
-            </div>
-            <div class="form-group">
-                <label for="discharge-summary">Discharge Summary</label>
-                <input type="number" id="discharge-summary" value="14317359" readonly>
+                <label for="vacant-beds">Vacant beds</label>
+                <input type="number" id="vacant-beds" readonly>
             </div>
         </div>
-
+        
         <div class="section">
-            <div class="section-title">Billing & Inventory</div>
+            <div class="section-title">OPD Services Available</div>
             <div class="form-group">
-                <label for="bill">Bill</label>
-                <input type="number" id="bill" value="88874380" readonly>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">ABHA</div>
-            <div class="form-group">
-                <label for="abha-created">ABHA Created</label>
-                <input type="number" id="abha-created" value="1722902" readonly>
-            </div>
-            <div class="form-group">
-                <label for="health-record-link-request">Health Record Link Request</label>
-                <input type="number" id="health-record-link-request" value="20350350" readonly>
-            </div>
-            <div class="form-group">
-                <label for="scan-and-share">Scan and Share</label>
-                <input type="number" id="scan-and-share" value="9577166" readonly>
+                <label for="opd-services">Services</label>
+                <input type="text" id="opd-services" readonly>
             </div>
         </div>
 
         
     </div>
 
+    </div>
+
     <script>
-        // JavaScript for dynamically updating data (example)
-        const newOpdInput = document.getElementById('new-opd');
-        const opdFollowUpInput = document.getElementById('opd-follow-up');
+        const hospitalsByDistrict = {
+            "All": [
+                "All Hospitals",
+                "Max Super Speciality Hospital",
+                "Delhi Surgical Centre",
+                "Apollo Spectra Hospitals",
+                "Medanta The Medicity",
+                "Nijhara Hospital Pvt Ltd",
+                "Shuddhi Hiims Ayurvedic Clinics and hospitals",
+                "Dr. Ram Manohar Lohia Hospital",
+                "Shroff Eye Centre",
+                "Delhi Heart And Lungs Institute",
+                "Dr. Aggarwals Eye Clinic",
+                "Bhagat Hospital",
+                "Shanti Mukand Hospital",
+                "Kailash Deepak Hospital",
+                "East Delhi Medical Centre",
+                "Surya Hospital",
+                "Aarogya Hospital",
+                "Makkar Multispeciality Hospital & Dialysis Centre",
+                "Cloudnine Hospital",
+                "Metro Hospital & Cancer Institute",
+                "Fortis Flt Lt Rajan Dhall Hospital",
+                "BLK-Max Super Speciality Hospital",
+                "Primus Super Speciality Hospital",
+                "SCI International Hospital",
+                "PSRI Multispeciality Hospital Delhi",
+                "CK Birla Hospital, Delhi",
+                "Saroj Super Speciality Hospital",
+                "Nulife Multi Specialty Hospital",
+                "Vinayak Hospital",
+                "Sant Parmanand Hospital",
+                "NKS Super Speciality Hospital",
+                "Fortis Hospital",
+                "Shanti Kumud Hospital",
+                "Dr Chaudhry's Moral Hospital Pvt. Ltd.",
+                "Medis Hospital® (24x7)",
+                "Signature Heart & Multi-speciality hospital",
+                "DR AGGARWAL'S WELLNESS MULTISPECIALITY HOSPITAL",
+                "Jag Pravesh Chandra Hospital",
+                "Park Hospital",
+                "Maharaja Agrasen Hospital",
+                "Dharamveer Solanki Hospital",
+                "Sehgal Neo Hospital",
+                "K K Hospital",
+                "Cygnus MLS Hospitals",
+                "Tulsi Multispeciality Hospital",
+                "Dr. Roshan Lal Hospital",
+                "Muskan Hospital",
+                "Samra hospital",
+                "Shanti Nursing Home",
+                "Jyoti Clinic & Nursing Home",
+                "Sukhmani Hospital",
+                "Batra Hospital & Medical Research Centre",
+                "Triton Hospital",
+                "Max Smart Super Speciality Hospital",
+                "Aakash Hospital",
+                "Spring Meadows Hospital",
+                "Fortis C-Doc Hospital",
+                "Aashlok Hospital",
+                "DIYOS Hospital",
+                "Irene Hospital",
+                "Manipal Hospital",
+                "Aakash Healthcare Super Speciality Hospital",
+                "Mata Roop Rani Maggo Hospital and IVF Centre",
+                "Amarleela Hospital",
+                "Venkateshwar Hospital",
+                "TARAK HOSPITAL INDIA PRIVATE LIMITED",
+                "Aastha Hospital & IVF Centre",
+                "MKW Hospital",
+                "Kukreja Hospital and Heart Centre",
+                "Satyabhama Hospital Private Limited",
+                "Kalra Hospitals",
+                "B.M. Gupta Hospital Pvt. Ltd.",
+                "Gandhi Hospital"
+            ],
+            "Central Delhi": [
+                "Max Super Speciality Hospital",
+                "Delhi Surgical Centre",
+                "Apollo Spectra Hospitals",
+                "Medanta The Medicity",
+                "Nijhara Hospital Pvt Ltd",
+                "Shuddhi Hiims Ayurvedic Clinics and hospitals",
+                "Dr. Ram Manohar Lohia Hospital",
+                "Shroff Eye Centre",
+                "Delhi Heart And Lungs Institute",
+                "Dr. Aggarwals Eye Clinic",
+                "Bhagat Hospital"
+            ],
+            "East Delhi": [
+                "Shanti Mukand Hospital",
+                "Kailash Deepak Hospital",
+                "East Delhi Medical Centre",
+                "Surya Hospital",
+                "Aarogya Hospital",
+                "Makkar Multispeciality Hospital & Dialysis Centre",
+                "Cloudnine Hospital",
+                "Metro Hospital & Cancer Institute"
+            ],
+            "New Delhi": [
+                "Fortis Flt Lt Rajan Dhall Hospital",
+                "BLK-Max Super Speciality Hospital",
+                "Primus Super Speciality Hospital",
+                "SCI International Hospital",
+                "PSRI Multispeciality Hospital Delhi",
+                "CK Birla Hospital, Delhi"
+            ],
+            "North Delhi": [
+                "Saroj Super Speciality Hospital",
+                "Nulife Multi Specialty Hospital",
+                "Vinayak Hospital",
+                "Sant Parmanand Hospital",
+                "NKS Super Speciality Hospital",
+                "Fortis Hospital",
+                "Shanti Kumud Hospital"
+            ],
+            "North East Delhi": [
+                "Dr Chaudhry's Moral Hospital Pvt. Ltd.",
+                "Medis Hospital® (24x7)",
+                "Signature Heart & Multi-speciality hospital",
+                "DR AGGARWAL'S WELLNESS MULTISPECIALITY HOSPITAL",
+                "Jag Pravesh Chandra Hospital"
+            ],
+            "North West Delhi": [
+                "Park Hospital",
+                "Maharaja Agrasen Hospital",
+                "Dharamveer Solanki Hospital",
+                "Sehgal Neo Hospital",
+                "K K Hospital",
+                "Cygnus MLS Hospitals"
+            ],
+            "Shahdara": [
+                "Tulsi Multispeciality Hospital",
+                "Dr. Roshan Lal Hospital",
+                "Muskan Hospital",
+                "Samra hospital",
+                "Shanti Nursing Home",
+                "Jyoti Clinic & Nursing Home"
+            ],
+            "South Delhi": [
+                "Fortis Flt Lt Rajan Dhall Hospital",
+                "Sukhmani Hospital",
+                "PSRI Multispeciality Hospital Delhi",
+                "Batra Hospital & Medical Research Centre",
+                "Triton Hospital",
+                "Max Smart Super Speciality Hospital",
+                "Aakash Hospital"
+            ],
+            "South East Delhi": [
+                "Spring Meadows Hospital",
+                "Fortis C-Doc Hospital",
+                "Aashlok Hospital",
+                "DIYOS Hospital",
+                "Irene Hospital"
+            ],
+            "South West Delhi": [
+                "Manipal Hospital",
+                "Aakash Healthcare Super Speciality Hospital",
+                "Mata Roop Rani Maggo Hospital and IVF Centre",
+                "Amarleela Hospital",
+                "Venkateshwar Hospital",
+                "TARAK HOSPITAL INDIA PRIVATE LIMITED",
+                "CK Birla Hospital"
+            ],
+            "West Delhi": [
+                "Aastha Hospital & IVF Centre",
+                "MKW Hospital",
+                "Kukreja Hospital and Heart Centre",
+                "Satyabhama Hospital Private Limited",
+                "Kalra Hospitals",
+                "B.M. Gupta Hospital Pvt. Ltd.",
+                "Gandhi Hospital"
+            ]
+        };
+    
+        const hospitalData = {
+            "All Hospitals": {
+        newOpd: 1555,
+        opdFollowUp: 1152,
+        casualtyNew: 680,
+        casualtyFollowUp: 330,
+        admission: 3470,
+        discharge: 3180,
+        transfer: 290,
+        totalBeds: 4570,
+        occupiedBeds: 3960,
+        vacantBeds: 610,
+        opdServices: "Cardiology, Neurology, Oncology, Orthopedics, Gynecology, Urology, Internal Medicine, Pediatrics, Gastroenterology, Pulmonology, Rheumatology, Endocrinology, Dermatology, ENT, Ophthalmology, Psychiatry, Dentistry, Geriatrics, Surgical Oncology, Trauma Surgery, Neurosurgery"
+    },
+            "Max Super Speciality Hospital": {
+                newOpd: 120,
+                opdFollowUp: 80,
+                casualtyNew: 50,
+                casualtyFollowUp: 30,
+                admission: 200,
+                discharge: 180,
+                transfer: 20,
+                totalBeds: 300,
+                occupiedBeds: 250,
+                vacantBeds: 50,
+                opdServices: "Cardiology, Neurology, Oncology"
+            },
+            "Delhi Surgical Centre": {
+                newOpd: 100,
+                opdFollowUp: 70,
+                casualtyNew: 40,
+                casualtyFollowUp: 25,
+                admission: 150,
+                discharge: 130,
+                transfer: 10,
+                totalBeds: 200,
+                occupiedBeds: 150,
+                vacantBeds: 50,
+                opdServices: "General Surgery, Orthopedics"
+            },
+    "Apollo Spectra Hospitals": {
+        newOpd: 150,
+        opdFollowUp: 90,
+        casualtyNew: 45,
+        casualtyFollowUp: 35,
+        admission: 210,
+        discharge: 190,
+        transfer: 25,
+        totalBeds: 320,
+        occupiedBeds: 260,
+        vacantBeds: 60,
+        opdServices: "Orthopedics, Urology, General Surgery"
+    },
+    "Medanta The Medicity": {
+        newOpd: 180,
+        opdFollowUp: 120,
+        casualtyNew: 60,
+        casualtyFollowUp: 40,
+        admission: 240,
+        discharge: 220,
+        transfer: 30,
+        totalBeds: 350,
+        occupiedBeds: 300,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Neurology, Gastroenterology"
+    },
+    "Nijhara Hospital Pvt Ltd": {
+        newOpd: 110,
+        opdFollowUp: 70,
+        casualtyNew: 55,
+        casualtyFollowUp: 25,
+        admission: 180,
+        discharge: 170,
+        transfer: 20,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Pediatrics, Dermatology, Endocrinology"
+    },
+    "Shuddhi Hiims Ayurvedic Clinics and hospitals": {
+        newOpd: 90,
+        opdFollowUp: 60,
+        casualtyNew: 40,
+        casualtyFollowUp: 20,
+        admission: 150,
+        discharge: 140,
+        transfer: 15,
+        totalBeds: 200,
+        occupiedBeds: 160,
+        vacantBeds: 40,
+        opdServices: "Ayurveda, Homeopathy, Panchakarma"
+    },
+    "Dr. Ram Manohar Lohia Hospital": {
+        newOpd: 200,
+        opdFollowUp: 130,
+        casualtyNew: 75,
+        casualtyFollowUp: 45,
+        admission: 260,
+        discharge: 240,
+        transfer: 35,
+        totalBeds: 400,
+        occupiedBeds: 350,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Oncology, Nephrology"
+    },
+    "Shroff Eye Centre": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 190,
+        discharge: 180,
+        transfer: 25,
+        totalBeds: 250,
+        occupiedBeds: 210,
+        vacantBeds: 40,
+        opdServices: "Ophthalmology, LASIK, Cataract Surgery"
+    },
+    "Delhi Heart And Lungs Institute": {
+        newOpd: 160,
+        opdFollowUp: 100,
+        casualtyNew: 65,
+        casualtyFollowUp: 40,
+        admission: 220,
+        discharge: 210,
+        transfer: 28,
+        totalBeds: 340,
+        occupiedBeds: 280,
+        vacantBeds: 60,
+        opdServices: "Cardiology, Pulmonology, Cardiothoracic Surgery"
+    },
+    "Dr. Aggarwals Eye Clinic": {
+        newOpd: 120,
+        opdFollowUp: 75,
+        casualtyNew: 55,
+        casualtyFollowUp: 35,
+        admission: 180,
+        discharge: 170,
+        transfer: 20,
+        totalBeds: 270,
+        occupiedBeds: 220,
+        vacantBeds: 50,
+        opdServices: "Ophthalmology, Glaucoma, Retina Surgery"
+    },
+    "Bhagat Hospital": {
+        newOpd: 140,
+        opdFollowUp: 95,
+        casualtyNew: 60,
+        casualtyFollowUp: 40,
+        admission: 210,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 320,
+        occupiedBeds: 270,
+        vacantBeds: 50,
+        opdServices: "Gynecology, Pediatrics, Orthopedics"
+    },
+    "Shanti Mukand Hospital": {
+        newOpd: 170,
+        opdFollowUp: 110,
+        casualtyNew: 70,
+        casualtyFollowUp: 50,
+        admission: 230,
+        discharge: 220,
+        transfer: 30,
+        totalBeds: 360,
+        occupiedBeds: 300,
+        vacantBeds: 60,
+        opdServices: "Oncology, Neurology, Gastroenterology"
+    },
+    "Kailash Deepak Hospital": {
+        newOpd: 150,
+        opdFollowUp: 90,
+        casualtyNew: 50,
+        casualtyFollowUp: 35,
+        admission: 210,
+        discharge: 190,
+        transfer: 25,
+        totalBeds: 320,
+        occupiedBeds: 260,
+        vacantBeds: 60,
+        opdServices: "Orthopedics, Cardiology, General Surgery"
+    },
+    "East Delhi Medical Centre": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 45,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 300,
+        occupiedBeds: 250,
+        vacantBeds: 50,
+        opdServices: "ENT, Ophthalmology, Dermatology"
+    },
+    "Surya Hospital": {
+        newOpd: 140,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 40,
+        admission: 220,
+        discharge: 210,
+        transfer: 25,
+        totalBeds: 340,
+        occupiedBeds: 290,
+        vacantBeds: 50,
+        opdServices: "Gynecology, Pediatrics, General Medicine"
+    },
+    "Aarogya Hospital": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 55,
+        casualtyFollowUp: 35,
+        admission: 210,
+        discharge: 190,
+        transfer: 22,
+        totalBeds: 320,
+        occupiedBeds: 270,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Orthopedics, General Surgery"
+    },
+    "Makkar Multispeciality Hospital & Dialysis Centre": {
+        newOpd: 110,
+        opdFollowUp: 70,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 190,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Nephrology, Urology, General Surgery"
+    },
+    "Cloudnine Hospital": {
+        newOpd: 160,
+        opdFollowUp: 100,
+        casualtyNew: 65,
+        casualtyFollowUp: 40,
+        admission: 240,
+        discharge: 220,
+        transfer: 28,
+        totalBeds: 350,
+        occupiedBeds: 300,
+        vacantBeds: 50,
+        opdServices: "Obstetrics, Pediatrics, Neonatology"
+    },
+    "Metro Hospital & Cancer Institute": {
+        newOpd: 180,
+        opdFollowUp: 120,
+        casualtyNew: 75,
+        casualtyFollowUp: 50,
+        admission: 260,
+        discharge: 240,
+        transfer: 35,
+        totalBeds: 400,
+        occupiedBeds: 350,
+        vacantBeds: 50,
+        opdServices: "Oncology, Cardiology, Neurology"
+    },
 
-        // Simulate real-time data updates
-        setInterval(() => {
-            // Update data randomly (replace with actual data fetching logic)
-            const newOpdValue = Math.floor(Math.random() * 100000000) + 100000000;
-            const opdFollowUpValue = Math.floor(Math.random() * 100000000) + 100000000;
+    "Fortis Flt Lt Rajan Dhall Hospital": {
+        newOpd: 170,
+        opdFollowUp: 110,
+        casualtyNew: 65,
+        casualtyFollowUp: 45,
+        admission: 240,
+        discharge: 220,
+        transfer: 30,
+        totalBeds: 360,
+        occupiedBeds: 310,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Orthopedics, Neurology"
+    },
+    "BLK-Max Super Speciality Hospital": {
+        newOpd: 190,
+        opdFollowUp: 130,
+        casualtyNew: 70,
+        casualtyFollowUp: 50,
+        admission: 250,
+        discharge: 230,
+        transfer: 30,
+        totalBeds: 370,
+        occupiedBeds: 320,
+        vacantBeds: 50,
+        opdServices: "Oncology, Gastroenterology, Urology"
+    },
+    "Primus Super Speciality Hospital": {
+        newOpd: 160,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 40,
+        admission: 220,
+        discharge: 210,
+        transfer: 20,
+        totalBeds: 340,
+        occupiedBeds: 290,
+        vacantBeds: 50,
+        opdServices: "Neurosurgery, Orthopedics, General Medicine"
+    },
+    "SCI International Hospital": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 35,
+        admission: 200,
+        discharge: 190,
+        transfer: 20,
+        totalBeds: 310,
+        occupiedBeds: 260,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Nephrology, Rheumatology"
+    },
+    "PSRI Multispeciality Hospital Delhi": {
+        newOpd: 180,
+        opdFollowUp: 120,
+        casualtyNew: 70,
+        casualtyFollowUp: 45,
+        admission: 240,
+        discharge: 220,
+        transfer: 30,
+        totalBeds: 350,
+        occupiedBeds: 300,
+        vacantBeds: 50,
+        opdServices: "Oncology, Pulmonology, General Surgery"
+    },
+    "CK Birla Hospital, Delhi": {
+        newOpd: 160,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 40,
+        admission: 210,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 320,
+        occupiedBeds: 270,
+        vacantBeds: 50,
+        opdServices: "Orthopedics, Cardiology, Gynecology"
+    },
+    "Saroj Super Speciality Hospital": {
+        newOpd: 150,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 35,
+        admission: 220,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 300,
+        occupiedBeds: 260,
+        vacantBeds: 40,
+        opdServices: "Urology, General Medicine, Pediatrics"
+    },
+    "Nulife Multi Specialty Hospital": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Nephrology, Endocrinology, ENT"
+    },
+    "Vinayak Hospital": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 25,
+        admission: 210,
+        discharge: 190,
+        transfer: 20,
+        totalBeds: 290,
+        occupiedBeds: 240,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Dermatology, Orthopedics"
+    },
+    "Sant Parmanand Hospital": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 45,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 180,
+        transfer: 25,
+        totalBeds: 270,
+        occupiedBeds: 220,
+        vacantBeds: 50,
+        opdServices: "Pediatrics, Gynecology, General Medicine"
+    },
+    "NKS Super Speciality Hospital": {
+        newOpd: 160,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 40,
+        admission: 230,
+        discharge: 210,
+        transfer: 30,
+        totalBeds: 340,
+        occupiedBeds: 290,
+        vacantBeds: 50,
+        opdServices: "Oncology, Cardiology, Gastroenterology"
+    },
+    "Fortis Hospital": {
+        newOpd: 170,
+        opdFollowUp: 110,
+        casualtyNew: 65,
+        casualtyFollowUp: 45,
+        admission: 240,
+        discharge: 220,
+        transfer: 25,
+        totalBeds: 360,
+        occupiedBeds: 310,
+        vacantBeds: 50,
+        opdServices: "Neurosurgery, Pulmonology, Rheumatology"
+    },
+    "Shanti Kumud Hospital": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 190,
+        transfer: 20,
+        totalBeds: 290,
+        occupiedBeds: 240,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Orthopedics, General Surgery"
+    },
+    "Dr Chaudhry's Moral Hospital Pvt. Ltd.": {
+        newOpd: 110,
+        opdFollowUp: 70,
+        casualtyNew: 45,
+        casualtyFollowUp: 25,
+        admission: 180,
+        discharge: 170,
+        transfer: 15,
+        totalBeds: 250,
+        occupiedBeds: 200,
+        vacantBeds: 50,
+        opdServices: "Orthopedics, Endocrinology, ENT"
+    },
+    "Medis Hospital® (24x7)": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 190,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 260,
+        occupiedBeds: 210,
+        vacantBeds: 50,
+        opdServices: "General Medicine, Gynecology, Pediatrics"
+    },
+    "Signature Heart & Multi-speciality hospital": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 30,
+        admission: 210,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Nephrology, General Surgery"
+    },
+    "DR AGGARWAL'S WELLNESS MULTISPECIALITY HOSPITAL": {
+        newOpd: 150,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 35,
+        admission: 220,
+        discharge: 210,
+        transfer: 25,
+        totalBeds: 300,
+        occupiedBeds: 250,
+        vacantBeds: 50,
+        opdServices: "Orthopedics, Dermatology, Gastroenterology"
+    },
+    "Jag Pravesh Chandra Hospital": {
+        newOpd: 100,
+        opdFollowUp: 70,
+        casualtyNew: 45,
+        casualtyFollowUp: 25,
+        admission: 180,
+        discharge: 170,
+        transfer: 20,
+        totalBeds: 240,
+        occupiedBeds: 200,
+        vacantBeds: 40,
+        opdServices: "Pediatrics, ENT, General Medicine"
+    },
+    "Park Hospital": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 190,
+        discharge: 180,
+        transfer: 15,
+        totalBeds: 260,
+        occupiedBeds: 220,
+        vacantBeds: 40,
+        opdServices: "Cardiology, Orthopedics, General Surgery"
+    },
+    "Maharaja Agrasen Hospital": {
+        newOpd: 150,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 35,
+        admission: 220,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 300,
+        occupiedBeds: 250,
+        vacantBeds: 50,
+        opdServices: "Neurosurgery, Gastroenterology, Pulmonology"
+    },
+    "Dharamveer Solanki Hospital": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 55,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 190,
+        transfer: 20,
+        totalBeds: 270,
+        occupiedBeds: 220,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Urology, Pediatrics"
+    },
+    "Sehgal Neo Hospital": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 60,
+        casualtyFollowUp: 35,
+        admission: 210,
+        discharge: 200,
+        transfer: 20,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Oncology, Gynecology, General Medicine"
+    },
+    "K K Hospital": {
+        newOpd: 110,
+        opdFollowUp: 70,
+        casualtyNew: 45,
+        casualtyFollowUp: 30,
+        admission: 180,
+        discharge: 170,
+        transfer: 15,
+        totalBeds: 250,
+        occupiedBeds: 200,
+        vacantBeds: 50,
+        opdServices: "Endocrinology, Orthopedics, ENT"
+    },
+    "Cygnus MLS Hospitals": {
+        newOpd: 160,
+        opdFollowUp: 100,
+        casualtyNew: 65,
+        casualtyFollowUp: 40,
+        admission: 230,
+        discharge: 210,
+        transfer: 30,
+        totalBeds: 340,
+        occupiedBeds: 290,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Gastroenterology, Neurology"
+    },
+    "Tulsi Multispeciality Hospital": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 50,
+        casualtyFollowUp: 35,
+        admission: 200,
+        discharge: 190,
+        transfer: 20,
+        totalBeds: 270,
+        occupiedBeds: 220,
+        vacantBeds: 50,
+        opdServices: "Gynecology, General Surgery, Dermatology"
+    },
+    "Dr. Roshan Lal Hospital": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 45,
+        casualtyFollowUp: 30,
+        admission: 190,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 260,
+        occupiedBeds: 210,
+        vacantBeds: 50,
+        opdServices: "Pediatrics, Orthopedics, Urology"
+    },
+    "Muskan Hospital": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 60,
+        casualtyFollowUp: 35,
+        admission: 210,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Nephrology, General Medicine"
+    },
+    "Samra hospital": {
+        newOpd: 110,
+        opdFollowUp: 70,
+        casualtyNew: 45,
+        casualtyFollowUp: 30,
+        admission: 180,
+        discharge: 170,
+        transfer: 15,
+        totalBeds: 250,
+        occupiedBeds: 200,
+        vacantBeds: 50,
+        opdServices: "Orthopedics, Gastroenterology, ENT"
+    },
+    "Shanti Nursing Home": {
+        newOpd: 100,
+        opdFollowUp: 60,
+        casualtyNew: 40,
+        casualtyFollowUp: 25,
+        admission: 170,
+        discharge: 160,
+        transfer: 15,
+        totalBeds: 240,
+        occupiedBeds: 200,
+        vacantBeds: 40,
+        opdServices: "General Medicine, Pediatrics, Gynecology"
+    },
+    "Jyoti Clinic & Nursing Home": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 190,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 260,
+        occupiedBeds: 210,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Orthopedics, Dermatology"
+    },
+    "Sukhmani Hospital": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 30,
+        admission: 210,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Gynecology, General Medicine, Pediatrics"
+    },
+    "Batra Hospital & Medical Research Centre": {
+        newOpd: 150,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 35,
+        admission: 220,
+        discharge: 210,
+        transfer: 25,
+        totalBeds: 300,
+        occupiedBeds: 250,
+        vacantBeds: 50,
+        opdServices: "Oncology, Pulmonology, Gastroenterology"
+    },
+    "Triton Hospital": {
+        newOpd: 160,
+        opdFollowUp: 110,
+        casualtyNew: 65,
+        casualtyFollowUp: 40,
+        admission: 230,
+        discharge: 220,
+        transfer: 30,
+        totalBeds: 340,
+        occupiedBeds: 290,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Neurology, General Surgery"
+    },
+    "Max Smart Super Speciality Hospital": {
+        newOpd: 190,
+        opdFollowUp: 130,
+        casualtyNew: 70,
+        casualtyFollowUp: 50,
+        admission: 250,
+        discharge: 230,
+        transfer: 30,
+        totalBeds: 370,
+        occupiedBeds: 320,
+        vacantBeds: 50,
+        opdServices: "Oncology, Gastroenterology, Orthopedics"
+    },
+    "Aakash Hospital": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 190,
+        transfer: 20,
+        totalBeds: 270,
+        occupiedBeds: 220,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Endocrinology, ENT"
+    },
+    "Spring Meadows Hospital": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 45,
+        casualtyFollowUp: 25,
+        admission: 190,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 260,
+        occupiedBeds: 210,
+        vacantBeds: 50,
+        opdServices: "Pediatrics, Gynecology, Orthopedics"
+    },
+    "Fortis C-Doc Hospital": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 35,
+        admission: 200,
+        discharge: 190,
+        transfer: 25,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Neurology, General Surgery"
+    },
+    "Aashlok Hospital": {
+        newOpd: 150,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 30,
+        admission: 220,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 300,
+        occupiedBeds: 250,
+        vacantBeds: 50,
+        opdServices: "Orthopedics, Dermatology, Urology"
+    },
+    "DIYOS Hospital": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 55,
+        casualtyFollowUp: 30,
+        admission: 210,
+        discharge: 200,
+        transfer: 20,
+        totalBeds: 270,
+        occupiedBeds: 220,
+        vacantBeds: 50,
+        opdServices: "Gynecology, Pediatrics, General Medicine"
+    },
+    "Irene Hospital": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 60,
+        casualtyFollowUp: 35,
+        admission: 210,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Nephrology, Cardiology, Orthopedics"
+    },
+    "Manipal Hospital": {
+        newOpd: 160,
+        opdFollowUp: 100,
+        casualtyNew: 65,
+        casualtyFollowUp: 40,
+        admission: 230,
+        discharge: 210,
+        transfer: 30,
+        totalBeds: 340,
+        occupiedBeds: 290,
+        vacantBeds: 50,
+        opdServices: "Oncology, Pulmonology, Gastroenterology"
+    },
+    "Aakash Healthcare Super Speciality Hospital": {
+        newOpd: 180,
+        opdFollowUp: 120,
+        casualtyNew: 70,
+        casualtyFollowUp: 45,
+        admission: 250,
+        discharge: 230,
+        transfer: 30,
+        totalBeds: 370,
+        occupiedBeds: 320,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Neurology, General Surgery"
+    },
+    "Mata Roop Rani Maggo Hospital and IVF Centre": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 30,
+        admission: 210,
+        discharge: 200,
+        transfer: 20,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Gynecology, Pediatrics, Orthopedics"
+    },
+    "Amarleela Hospital": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 190,
+        transfer: 20,
+        totalBeds: 270,
+        occupiedBeds: 220,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Endocrinology, ENT"
+    },
+    "Venkateshwar Hospital": {
+        newOpd: 150,
+        opdFollowUp: 100,
+        casualtyNew: 60,
+        casualtyFollowUp: 35,
+        admission: 220,
+        discharge: 210,
+        transfer: 25,
+        totalBeds: 300,
+        occupiedBeds: 250,
+        vacantBeds: 50,
+        opdServices: "Oncology, Pulmonology, Gastroenterology"
+    },
+    "TARAK HOSPITAL INDIA PRIVATE LIMITED": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 260,
+        occupiedBeds: 210,
+        vacantBeds: 50,
+        opdServices: "General Medicine, Gynecology, Orthopedics"
+    },
+    "Aastha Hospital & IVF Centre": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 30,
+        admission: 210,
+        discharge: 200,
+        transfer: 25,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Pediatrics, Endocrinology, ENT"
+    },
+    "MKW Hospital": {
+        newOpd: 100,
+        opdFollowUp: 70,
+        casualtyNew: 45,
+        casualtyFollowUp: 25,
+        admission: 180,
+        discharge: 170,
+        transfer: 15,
+        totalBeds: 240,
+        occupiedBeds: 200,
+        vacantBeds: 40,
+        opdServices: "Cardiology, Orthopedics, Gynecology"
+    },
+    "Kukreja Hospital and Heart Centre": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 55,
+        casualtyFollowUp: 30,
+        admission: 210,
+        discharge: 200,
+        transfer: 20,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Nephrology, General Surgery"
+    },
+    "Satyabhama Hospital Private Limited": {
+        newOpd: 130,
+        opdFollowUp: 85,
+        casualtyNew: 50,
+        casualtyFollowUp: 30,
+        admission: 200,
+        discharge: 190,
+        transfer: 25,
+        totalBeds: 270,
+        occupiedBeds: 220,
+        vacantBeds: 50,
+        opdServices: "Gynecology, Dermatology, Pediatrics"
+    },
+    "Kalra Hospitals": {
+        newOpd: 120,
+        opdFollowUp: 80,
+        casualtyNew: 45,
+        casualtyFollowUp: 25,
+        admission: 190,
+        discharge: 180,
+        transfer: 20,
+        totalBeds: 260,
+        occupiedBeds: 210,
+        vacantBeds: 50,
+        opdServices: "Cardiology, Orthopedics, General Medicine"
+    },
+    "B.M. Gupta Hospital Pvt. Ltd.": {
+        newOpd: 140,
+        opdFollowUp: 90,
+        casualtyNew: 60,
+        casualtyFollowUp: 35,
+        admission: 200,
+        discharge: 190,
+        transfer: 25,
+        totalBeds: 280,
+        occupiedBeds: 230,
+        vacantBeds: 50,
+        opdServices: "Nephrology, Endocrinology, ENT"
+    },
+    "Gandhi Hospital": {
+        newOpd: 150,
+        opdFollowUp: 100,
+        casualtyNew: 65,
+        casualtyFollowUp: 40,
+        admission: 220,
+        discharge: 210,
+        transfer: 30,
+        totalBeds: 300,
+        occupiedBeds: 250,
+        vacantBeds: 50,
+        opdServices: "Pulmonology, Gastroenterology, Neurology"
+    }
+};
 
-            // Update input values
-            newOpdInput.value = newOpdValue;
-            opdFollowUpInput.value = opdFollowUpValue;
-        }, 5000); // Update every 5 seconds
+
+
+    
+        function updateHospitals() {
+            const district = document.getElementById("district-dropdown").value;
+            const hospitalDropdown = document.getElementById("hospital-dropdown");
+    
+            hospitalDropdown.innerHTML = "";
+    
+            hospitalsByDistrict[district].forEach(hospital => {
+                const option = document.createElement("option");
+                option.text = hospital;
+                option.value = hospital;
+                hospitalDropdown.add(option);
+            });
+    
+            updateHospitalData(); // Update hospital data whenever a new hospital is selected
+        }
+    
+        function updateHospitalData() {
+            const selectedHospital = document.getElementById("hospital-dropdown").value;
+            const data = hospitalData[selectedHospital];
+    
+            if (data) {
+                document.getElementById("new-opd").value = data.newOpd;
+                document.getElementById("opd-follow-up").value = data.opdFollowUp;
+                document.getElementById("casualty-new").value = data.casualtyNew;
+                document.getElementById("casualty-followup").value = data.casualtyFollowUp;
+                document.getElementById("admission").value = data.admission;
+                document.getElementById("discharge").value = data.discharge;
+                document.getElementById("transfer").value = data.transfer;
+                document.getElementById("total-beds").value = data.totalBeds;
+                document.getElementById("occupied-beds").value = data.occupiedBeds;
+                document.getElementById("vacant-beds").value = data.vacantBeds;
+                document.getElementById("opd-services").value = data.opdServices;
+            } else {
+                // Clear the fields if no data is available
+                document.getElementById("new-opd").value = "";
+                document.getElementById("opd-follow-up").value = "";
+                document.getElementById("casualty-new").value = "";
+                document.getElementById("casualty-followup").value = "";
+                document.getElementById("admission").value = "";
+                document.getElementById("discharge").value = "";
+                document.getElementById("transfer").value = "";
+                document.getElementById("total-beds").value = "";
+                document.getElementById("occupied-beds").value = "";
+                document.getElementById("vacant-beds").value = "";
+                document.getElementById("opd-services").value = "";
+            }
+        }
+    
+        // Initialize dropdowns and hospital data on page load
+        window.onload = function () {
+            updateHospitals();
+            document.getElementById("district-dropdown").addEventListener("change", updateHospitals);
+            document.getElementById("hospital-dropdown").addEventListener("change", updateHospitalData);
+        };
     </script>
+    
+
+       <div class="container">
+        <h2>District and Their Hospitals</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>District</th>
+                        <th>Hospitals</th>
+                        <th>Contact Numbers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Central Delhi</td>
+                        <td>
+                            Max Super Speciality Hospital <br><br>
+                            Delhi Surgical Centre<br><br>
+                            Apollo Spectra Hospitals <br><br>
+                            Medanta The Medicity <br><br>
+                            Nijhara Hospital Pvt Ltd <br><br>
+                            Shuddhi Hiims Ayurvedic Clinics and hospitals <br><br>
+                            Dr. Ram Manohar Lohia Hospital <br><br>
+                            Shroff Eye Centre <br><br>
+                            Delhi Heart And Lungs Institute <br><br>
+                            Dr. Aggarwals Eye Clinic <br><br>
+                            Bhagat Hospital 
+                        <td>
+                            07795671073<br><br>
+                            08147944643 <br><br>
+                            08735911165 <br><br>
+                            07795666852 <br><br>
+                            07411954227 <br><br>
+                            07405443395 <br><br>
+                            (+91)-9558061826 <br><br>
+                            07947150952 <br><br>
+                            07947414114 <br><br>
+                            07411995751 <br><br>
+                            07795654717 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>East Delhi</td>
+                        <td>
+                            Shanti Mukand Hospital <br><br>
+                            Kailash Deepak Hospital <br><br>
+                            East Delhi Medical Centre <br><br>
+                            Surya Hospital <br><br>
+                            Aarogya Hospital <br><br>
+                            Makkar Multispeciality Hospital & Dialysis Centre <br><br>
+                            Cloudnine Hospital  <br><br>
+                            Metro Hospital & Cancer Institute 
+                        </td>
+                        <td>
+                            011 4727 6600 <br><br>
+                            011 3535 3535 <br><br>
+                            094104 51045 <br><br>
+                            072176 07103 <br><br>
+                            093693 00300 <br><br>
+                            070119 15781 <br><br>
+                            099728 99728 <br><br>
+                            011 4928 6666 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>New Delhi</td>
+                        <td>
+                            Fortis Flt Lt Rajan Dhall Hospital <br><br>
+                            BLK-Max Super Speciality Hospital <br><br>
+                            Primus Super Speciality Hospital <br><br>
+                            SCI International Hospital <br><br>
+                            PSRI Multispeciality Hospital Delhi <br><br>
+                            CK Birla Hospital, Delhi 
+                        </td>
+                        <td>
+                            097110 90119 <br><br>
+                            011 3040 3040 <br><br>
+                            011 6620 6630 <br><br>
+                            099994 46622 <br><br>
+                            084848 48417 <br><br>
+                            092891 29487 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>North Delhi</td>
+                        <td>
+                            Saroj Super Speciality Hospital <br><br>
+                            Nulife Multi Specialty Hospital <br><br>
+                            Vinayak Hospital <br><br>
+                            Sant Parmanand Hospital <br><br>
+                            NKS Super Speciality Hospital <br><br>
+                            Fortis Hospital <br><br>
+                            Shanti Kumud Hospital 
+                        </td>
+                        <td>
+                            011 4790 3333 <br><br>
+                            011 4700 5555 <br><br>
+                            099904 55555 <br><br>
+                            +91 - 11 - 23994401-10 <br><br>
+                            011 3506 6666 <br><br>
+                            084483 39575 <br><br>
+                            099108 95505 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>North East Delhi</td>
+                        <td>
+                            Dr Chaudhry's Moral Hospital Pvt. Ltd. <br><br>
+                            Medis Hospital® (24x7) <br><br>
+                            Signature Heart & Multi-speciality hospital <br><br>
+                            DR AGGARWAL'S WELLNESS MULTISPECIALITY HOSPITAL <br><br>
+                            Jag Pravesh Chandra Hospital 
+                        </td>
+                        <td>
+                            011 2291 4355 <br><br>
+                            088001 71414 <br><br>
+                            070121 09635 <br><br>
+                            072900 02072 <br><br>
+                            011 2218 4453 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>North West Delhi</td>
+                        <td>
+                            Park Hospital <br><br>
+                            Maharaja Agrasen Hospital <br><br>
+                            Dharamveer Solanki Hospital <br><br>
+                            Sehgal Neo Hospital <br><br>
+                            K K Hospital <br><br>
+                            Cygnus MLS Hospitals 
+                        </td>
+                        <td>
+                            011 4532 3232 <br><br>
+                            011 4077 7777 <br><br>
+                            098111 88128 <br><br>
+                            011 4556 5656 <br><br>
+                            096544 51104 <br><br>
+                            099996 55255 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Shahdara</td>
+                        <td>
+                            Tulsi Multispeciality Hospital <br><br>
+                            Dr. Roshan Lal Hospital <br><br>
+                            Muskan Hospital <br><br>
+                            Samra hospital <br><br>
+                            Shanti Nursing Home <br><br>
+                            Jyoti Clinic & Nursing Home 
+
+                        </td>
+                        <td>
+                            096502 03034 <br><br>
+                            07947421640 <br><br>
+                            085956 23095 <br><br>
+                            099100 11414 <br><br>
+                            099993 53978 <br><br>
+                            011 2281 0860 
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>South Delhi</td>
+                        <td>
+                            Fortis Flt Lt Rajan Dhall Hospital <br><br>
+                            Sukhmani Hospital <br><br>
+                            PSRI Multispeciality Hospital Delhi <br><br>
+                            Batra Hospital & Medical Research Centre <br><br>
+                            Triton Hospital <br><br>
+                            Max Smart Super Speciality Hospital <br><br>
+                            Aakash Hospital 
+                        </td>
+                        <td>
+                            097110 90119 <br><br>
+                            092892 60077 <br><br>
+                            084848 48417 <br><br>
+                            011 2995 8747 <br><br>
+                            011 4605 6464 <br><br>
+                            011 7121 2121 <br><br>
+                            011 4050 1000 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>South East Delhi</td>
+                        <td>
+                            Spring Meadows Hospital <br><br>
+                            Fortis C-Doc Hospital <br><br>
+                            Aashlok Hospital <br><br>
+                            DIYOS Hospital <br><br>
+                            Irene Hospital 
+                        </td>
+                        <td>
+                            07942697172 <br><br>
+                            011 4910 1222 <br><br>
+                            011 4616 5900 <br><br>
+                            099101 20836 <br><br>
+                            011 4992 2222 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>South West Delhi</td>
+                        <td>
+                            Manipal Hospital <br><br>
+                            Aakash Healthcare Super Speciality Hospital <br><br>
+                            Mata Roop Rani Maggo Hospital and IVF Centre <br><br>
+                            Amarleela Hospital <br><br>
+                            Venkateshwar Hospital <br><br>
+                            TARAK HOSPITAL INDIA PRIVATE LIMITED <br><br>
+                            CK Birla Hospital
+
+                        </td>
+                        <td>
+                            011 4967 4967 <br><br>
+                            011 4338 8888 <br><br>
+                            095550 59059 <br><br>
+                            011 4566 3333 <br><br>
+                            011 4855 5555 <br><br>
+                            082858 82288 <br><br>
+                            092891 29487 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>West Delhi</td>
+                        <td>
+                            Aastha Hospital & IVF Centre <br><br>
+                            MKW Hospital <br><br>
+                            Kukreja Hospital and Heart Centre <br><br>
+                            Satyabhama Hospital Private Limited <br><br>
+                            Kalra Hospitals <br><br>
+                            B.M. Gupta Hospital Pvt. Ltd. <br><br>
+                            Gandhi Hospital 
+
+                        </td>
+                        <td>
+                            092509 13363 <br><br>
+                            011 4560 9999 <br><br>
+                            011 4567 5000 <br><br>
+                            097117 33339 <br><br>
+                            011 4500 5700 <br><br>
+                            011 4715 7777 <br><br>
+                            011 4025 4800 
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+    
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 FusionX. All Rights Reserved.</p>
+    </div>
+</footer>
+
 </body>
 </html>
