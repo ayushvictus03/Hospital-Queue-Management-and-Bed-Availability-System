@@ -5,7 +5,7 @@ body {
 }
 
 header {
-    background-color: #007bff;
+    background-color: hwb(211 0% 0%);
     color: white;
     padding: 1rem 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -257,4 +257,71 @@ button:hover {
     font-size: 1.1em;
     line-height: 1.6;
     color: #666;
+}
+.healthId{
+    text-align: center;
+    
+}
+.healthId p{
+    color: rgb(109, 118, 155);
+    font-weight: 300;
+}
+.healthId h2{
+    color: rgb(69, 53, 170);
+    /* font-size: larger; */
+}
+.healthId h3{
+    font-size: xx-large;
+}
+.healthId label{
+    font-size: larger;
+}
+.inp{
+    padding-top: 5px;
+    padding-bottom: 25px;
+}
+.inp p{
+    /* text-align: left;
+    font-size: medium;
+    font-weight: 500; */
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+}
+.inp input{
+    width: 100px;
+    padding: 15px;
+    border: none;
+    font-size: medium;
+    text-align: center;
+    border-radius: 8px;
+    background-color: rgb(238, 238, 242);
+}
+
+.inp2 input{
+    width: 350px;
+    padding: 15px;
+    border: none;
+    font-size: medium;
+    text-align: left;
+    border-radius: 8px;
+    background-color: rgb(238, 238, 242);
+}
+.inp2 p{
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+}
+ input:focus{
+    border: none;
+    outline: none;
+}
+.healthId button{
+    color: white;
+    font-weight: bold;
+    font-size: larger;
+    width: 200px;
+    border-radius: 30px;
+    margin-top: 30px;
+    box-shadow:rgb(146, 176, 209)0px 5px 15px;
 }
