@@ -27,22 +27,29 @@
         </div>
     </header>
 
-    <main>
-        <div class="container">
-            <h2>Login</h2>
-            <form action="/login" method="post">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
-            </form>
+    <form id="loginForm" action="/login" method="post" onsubmit="return handleLogin()">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
         </div>
-    </main>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    
+    <script>
+        function handleLogin() {
+            // You can add validation or AJAX request here if needed
+    
+            // Redirect to afterlogin.html
+            window.location.href = "afterlogin.html";
+    
+            // Prevent form submission
+            return false;
+        }
+    </script>
 
     <footer>
         <div class="container">

@@ -19,7 +19,6 @@
                     <li><a href="statewise.html">District wise Dashboard</a></li>
                     <li><a href="create-health-id.html">Create Health ID</a></li>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="live-status.html">Live Status</a></li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="login.html">Login</a></li>
                 </ul>
@@ -33,226 +32,222 @@
                 <h2>eHospital Status</h2>
                 <div class="status-item">
                     <label for="activeHospitals">Today's Active Hospitals:</label>
-                    <input type="text" id="activeHospitals" value="183" readonly>
+                    <input type="text" id="activeHospitals" value="237" readonly>
                 </div>
                 <div class="status-item">
                     <label for="patientRegistration">Patient Registration:</label>
-                    <input type="text" id="patientRegistration" value="43,72,53,850" readonly>
+                    <input type="text" id="patientRegistration" value="5,12,34,000" readonly>
                 </div>
                 <div class="status-item">
                     <label for="admission">Admission:</label>
-                    <input type="text" id="admission" value="3,40,98,055" readonly>
+                    <input type="text" id="admission" value="4,20,56,000" readonly>
                 </div>
                 <div class="status-item">
                     <label for="prescription">Prescription:</label>
-                    <input type="text" id="prescription" value="53,59,369" readonly>
+                    <input type="text" id="prescription" value="68,90,000" readonly>
                 </div>
                 <div class="status-item">
                     <label for="labReport">Laboratory Report:</label>
-                    <input type="text" id="labReport" value="1,49,99,606" readonly>
+                    <input type="text" id="labReport" value="1,85,00,000" readonly>
                 </div>
                 <div class="status-item">
                     <label for="dischargeSummary">Discharge Summary:</label>
-                    <input type="text" id="dischargeSummary" value="1,42,51,353" readonly>
+                    <input type="text" id="dischargeSummary" value="1,72,75,000" readonly>
                 </div>
             </div>
-
+        </div>
+        
+    
             <div class="eHospitalImplementation">
                 <h2>eHospital Implementation</h2>
                 <div class="map-container">
                     <img src="img4.png" alt="India Map">
                     <div class="legend">
                         <div class="legend-item">
-                            <div class="color-circle" style="background-color: #007bff;"></div>
+                            <div class="color-circle" style="background-color: #1a589a;"></div>
                             <p>> 50</p>
                         </div>
                         <div class="legend-item">
-                            <div class="color-circle" style="background-color: #4285f4;"></div>
+                            <div class="color-circle" style="background-color: #3781f8;"></div>
                             <p>11 to 50</p>
                         </div>
                         <div class="legend-item">
-                            <div class="color-circle" style="background-color: #70c5ce;"></div>
+                            <div class="color-circle" style="background-color: #70b2f8;"></div>
                             <p>6 to 10</p>
                         </div>
                         <div class="legend-item">
-                            <div class="color-circle" style="background-color: #ced4da;"></div>
+                            <div class="color-circle" style="background-color: #42b1e5;"></div>
                             <p><= 5</p>
                         </div>
+            
                         <div class="legend-item">
-                            <div class="color-circle" style="background-color: #f8f9fa;"></div>
-                            <p>Inactive</p>
-                        </div>
-                        <div class="legend-item">
-                            <div class="color-circle" style="background-color: #fff;"></div>
+                            <div class="color-circle" style="background-color: #c1c8e1;"></div>
                             <p>Not yet covered</p>
                         </div>
                     </div>
                 </div>
             </div>
-
+    
             <div class="table-container">
                 <h2>District wise eHospital Data</h2>
-                <div class="table-controls">
-                    <button class="btn copy">Copy</button>
-                    <button class="btn excel">Excel</button>
-                    <button class="btn pdf">PDF</button>
-                </div>
+               
                 <input type="text" id="searchInput" placeholder="Search...">
                 <table>
                     <thead>
                         <tr>
-                            <th>District</th>
-                            <th>Last Updated On</th>
-                            <th>Patient Registration</th>
-                            <th>New Patient</th>
-                            <th>Revisited Patient</th>
-                            <th>Clinic</th>
-                            <th>Total No. of Beds</th>
-                            <th>Occupied Beds</th>
-                            <th>Vacant Beds</th>
-                            <th>OPD services</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Central Delhi</td>
-                            <td>31/08/2024</td>
-                            <td>10,99,996</td>
-                            <td>64,748</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>1,23,524</td>
-                            <td>0</td>
-                            <td>375</td>
-                            <td>54,468</td>
-                        </tr>
-                        <tr>
-                            <td>East Delhi</td>
-                            <td>31/08/2024</td>
-                            <td>2,27,84,290</td>
-                            <td>18,98,824</td>
-                            <td>12,682</td>
-                            <td>27,32,200</td>
-                            <td>29,92,336</td>
-                            <td>1,53,584</td>
-                            <td>1,41,790</td>
-                            <td>53,54,765</td>
-                        </tr>
-                        <tr>
-                            <td>New Delhi</td>
-                            <td>23/03/2020</td>
-                            <td>13,735</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                        </tr>
-                        <tr>
-                            <td>North Delhi</td>
-                            <td>31/08/2024</td>
-                            <td>82,51,832</td>
-                            <td>3,95,804</td>
-                            <td>21,69,120</td>
-                            <td>19</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>3,117</td>
-                            <td>98,973</td>
-                        </tr>
-                        <tr>
-                            <td>North East Delhi</td>
-                            <td>06/06/2024</td>
-                            <td>1,69,689</td>
-                            <td>4,820</td>
-                            <td>88</td>
-                            <td>79</td>
-                            <td>61</td>
-                            <td>6</td>
-                            <td>21</td>
-                            <td>120</td>
-                        </tr>
-                        <tr>
-                            <td>North West Delhi</td>
-                            <td>31/08/2024</td>
-                            <td>91,46,723</td>
-                            <td>3,49,787</td>
-                            <td>23,14,831</td>
-                            <td>4,338</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>19,200</td>
-                            <td>1,28,766</td>
-                        </tr>
-                        <tr>
-                            <td>Shahdara</td>
-                            <td>31/08/2024</td>
-                            <td>98,08,511</td>
-                            <td>6,75,090</td>
-                            <td>16,52,863</td>
-                            <td>23</td>
-                            <td>20,660</td>
-                            <td>67</td>
-                            <td>4,794</td>
-                            <td>1,25,066</td>
-                        </tr>
-                        <tr>
-                            <td>South Delhi</td>
-                            <td>31/08/2024</td>
-                            <td>5,97,31,813</td>
-                            <td>23,24,051</td>
-                            <td>20,00,994</td>
-                            <td>8,52,023</td>
-                            <td>15,78,617</td>
-                            <td>74,613</td>
-                            <td>2,825</td>
-                            <td>3,80,167</td>
-                        </tr>
-                        <tr>
-                            <td>South East Delhi</td>
-                            <td>11/06/2024</td>
-                            <td>4,21,661</td>
-                            <td>4,271</td>
-                            <td>0</td>
-                            <td>50,167</td>
-                            <td>25</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>176</td>
-                        </tr>
-                        <tr>
-                            <td>South West Delhi</td>
-                            <td>31/08/2024</td>
-                            <td>19,15,713</td>
-                            <td>1,27,008</td>
-                            <td>9,16,662</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>0</td>
-                            <td>30</td>
-                            <td>81</td>
-                        </tr>
-                        <tr>
-                            <td>West Delhi</td>
-                            <td>31/08/2024</td>
-                            <td>56,45,072</td>
-                            <td>4,12,253</td>
-                            <td>8,99,097</td>
-                            <td>31</td>
-                            <td>77</td>
-                            <td>0</td>
-                            <td>890</td>
-                            <td>31,946</td>
-                        </tr>
-                       
+                            <tr>
+                                <th>District</th>
+                                <th>Last Updated On</th>
+                                <th>Patient Registration</th>
+                                <th>New Patient</th>
+                                <th>Revisited Patient</th>
+                                <th>Hospitals</th>
+                                <th>Total No. of Beds</th>
+                                <th>Occupied Beds</th>
+                                <th>Vacant Beds</th>
+                                <th>OPD services</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Central Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>1,200,000</td>
+                                <td>70,000</td>
+                                <td>15,000</td>
+                                <td>11</td>
+                                <td>1,500</td>
+                                <td>300</td>
+                                <td>1,200</td>
+                                <td>65,000</td>
+                            </tr>
+                            <tr>
+                                <td>East Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>2,500,000</td>
+                                <td>150,000</td>
+                                <td>40,000</td>
+                                <td>8</td>
+                                <td>2,000</td>
+                                <td>500</td>
+                                <td>1,500</td>
+                                <td>75,000</td>
+                            </tr>
+                            <tr>
+                                <td>New Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>20,000</td>
+                                <td>5,000</td>
+                                <td>1,000</td>
+                                <td>6</td>
+                                <td>500</td>
+                                <td>100</td>
+                                <td>400</td>
+                                <td>10,000</td>
+                            </tr>
+                            <tr>
+                                <td>North Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>1,000,000</td>
+                                <td>60,000</td>
+                                <td>25,000</td>
+                                <td>7</td>
+                                <td>1,000</td>
+                                <td>200</td>
+                                <td>800</td>
+                                <td>45,000</td>
+                            </tr>
+                            <tr>
+                                <td>North East Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>150,000</td>
+                                <td>10,000</td>
+                                <td>2,000</td>
+                                <td>5</td>
+                                <td>150</td>
+                                <td>30</td>
+                                <td>120</td>
+                                <td>5,000</td>
+                            </tr>
+                            <tr>
+                                <td>North West Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>1,200,000</td>
+                                <td>80,000</td>
+                                <td>30,000</td>
+                                <td>6</td>
+                                <td>1,500</td>
+                                <td>600</td>
+                                <td>900</td>
+                                <td>55,000</td>
+                            </tr>
+                            <tr>
+                                <td>Shahdara</td>
+                                <td>05/09/2024</td>
+                                <td>1,000,000</td>
+                                <td>70,000</td>
+                                <td>20,000</td>
+                                <td>6</td>
+                                <td>800</td>
+                                <td>200</td>
+                                <td>600</td>
+                                <td>50,000</td>
+                            </tr>
+                            <tr>
+                                <td>South Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>3,000,000</td>
+                                <td>150,000</td>
+                                <td>60,000</td>
+                                <td>7</td>
+                                <td>2,500</td>
+                                <td>800</td>
+                                <td>1,700</td>
+                                <td>90,000</td>
+                            </tr>
+                            <tr>
+                                <td>South East Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>200,000</td>
+                                <td>15,000</td>
+                                <td>5,000</td>
+                                <td>5</td>
+                                <td>300</td>
+                                <td>50</td>
+                                <td>250</td>
+                                <td>12,000</td>
+                            </tr>
+                            <tr>
+                                <td>South West Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>800,000</td>
+                                <td>40,000</td>
+                                <td>20,000</td>
+                                <td>7</td>
+                                <td>700</td>
+                                <td>100</td>
+                                <td>600</td>
+                                <td>30,000</td>
+                            </tr>
+                            <tr>
+                                <td>West Delhi</td>
+                                <td>05/09/2024</td>
+                                <td>1,500,000</td>
+                                <td>90,000</td>
+                                <td>35,000</td>
+                                <td>7</td>
+                                <td>1,200</td>
+                                <td>300</td>
+                                <td>900</td>
+                                <td>55,000</td>
+                            </tr>
+                        </tbody>
                     </tbody>
                 </table>
-                
             </div>
         </div>
     </main>
+    
 
     <footer>
         <div class="container">
